@@ -7,8 +7,6 @@
 .vscode/
 
 # intermediate files
-node_modules/
-
-plugins/
-
-typings/
+/node_modules/
+/plugins/
+/typings/
