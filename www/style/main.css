@@ -517,7 +517,7 @@ hr {
   line-height: 42px;
   margin-bottom: 0; }
 
-.restart-button {
+.forfeit-button {
   display: inline-block;
   background: #8f7a66;
   border-radius: 3px;
@@ -529,6 +529,19 @@ hr {
   display: block;
   text-align: center;
   float: right; }
+
+.start-playing-button {
+  display: inline-block;
+  background: #8f7a66;
+  border-radius: 3px;
+  padding: 0 20px;
+  text-decoration: none;
+  color: #f9f6f2;
+  height: 40px;
+  line-height: 42px;
+  display: block;
+  text-align: center;
+  float: center; }
 
 .game-explanation {
   margin-top: 50px; }
@@ -557,13 +570,16 @@ hr {
   .heading {
     margin-bottom: 10px; }
 
+  .game-root {
+      visibility: hidden; }
+
   .game-intro {
     width: 55%;
     display: block;
     box-sizing: border-box;
     line-height: 1.65; }
 
-  .restart-button {
+  .forfeit-button {
     width: 42%;
     padding: 0;
     display: block;

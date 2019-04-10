@@ -69,9 +69,9 @@ KeyboardInputManager.prototype.listen = function () {
   });
 
   // Respond to button presses
-  this.bindButtonPress(".retry-button", this.restart);
-  this.bindButtonPress(".restart-button", this.restart);
-  this.bindButtonPress(".keep-playing-button", this.keepPlaying);
+  this.bindButtonPress(".retry-button", this.reportFinalScore);
+  this.bindButtonPress(".forfeit-button", this.forfeit);
+  this.bindButtonPress(".start-playing-button", this.launchSkillz);
 
   // Respond to swipe events
   var touchStartClientX, touchStartClientY;
@@ -127,10 +127,20 @@ KeyboardInputManager.prototype.listen = function () {
   });
 };
 
-KeyboardInputManager.prototype.restart = function (event) {
+KeyboardInputManager.prototype.reportFinalScore = function (event) {
   event.preventDefault();
-  this.emit("restart");
+  this.emit("reportFinalScore");
 };
+
+KeyboardInputManager.prototype.forfeit = function (event) {
+    event.preventDefault();
+    this.emit("forfeit");
+  };
+
+KeyboardInputManager.prototype.launchSkillz = function (event) {
+    event.preventDefault();
+    this.emit("launchSkillz");
+  };
 
 KeyboardInputManager.prototype.keepPlaying = function (event) {
   event.preventDefault();

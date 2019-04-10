@@ -7,7 +7,8 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
   this.startTiles     = 2;
 
   this.inputManager.on("move", this.move.bind(this));
-  this.inputManager.on("restart", this.restart.bind(this));
+  this.inputManager.on("reportFinalScore", this.reportFinalScore.bind(this));
+  this.inputManager.on("forfeit", this.forfeit.bind(this));
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
 
   this.setup();
@@ -19,6 +20,16 @@ GameManager.prototype.restart = function () {
   this.actuator.continueGame(); // Clear the game won/lost message
   this.setup();
 };
+
+// Report the final score to end the match
+GameManager.prototype.reportFinalScore = function () {
+  window.alert('TODO: Report final score');
+};
+
+// Forfeit the match
+GameManager.prototype.forfeit = function () {
+    window.alert("TODO: Forfeit the match");
+  };
 
 // Keep playing after winning (allows going over 2048)
 GameManager.prototype.keepPlaying = function () {
