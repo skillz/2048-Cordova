@@ -23,13 +23,13 @@ GameManager.prototype.restart = function () {
 
 // Report the final score to end the match
 GameManager.prototype.reportFinalScore = function () {
-  window.alert('TODO: Report final score');
+  SkillzCordova.reportScore(this.score, SkillzDelegateCordova.getMatchInfo().id);
 };
 
 // Forfeit the match
 GameManager.prototype.forfeit = function () {
-    window.alert("TODO: Forfeit the match");
-  };
+  SkillzCordova.abortMatch(SkillzDelegateCordova.getMatchInfo().id);
+};
 
 // Keep playing after winning (allows going over 2048)
 GameManager.prototype.keepPlaying = function () {
@@ -153,6 +153,8 @@ GameManager.prototype.move = function (direction) {
   // Save the current tile positions and remove merger information
   this.prepareTiles();
 
+  const beforeScore = self.score;
+
   // Traverse the grid in the right direction and move tiles
   traversals.x.forEach(function (x) {
     traversals.y.forEach(function (y) {
@@ -189,6 +191,10 @@ GameManager.prototype.move = function (direction) {
       }
     });
   });
+
+  if (beforeScore != self.score) {
+    SkillzCordova.updatePlayersCurrentScore(self.score, SkillzDelegateCordova.getMatchInfo().id);
+  }
 
   if (moved) {
     this.addRandomTile();
