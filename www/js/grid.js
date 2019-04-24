@@ -1,6 +1,6 @@
 function Grid(size, previousState) {
   this.size = size;
-  this.cells = previousState ? this.fromState(previousState) : this.empty();
+  this.cells = this.empty();
 }
 
 // Build a grid of the specified size
@@ -34,11 +34,14 @@ Grid.prototype.fromState = function (state) {
 };
 
 // Find the first available random position
-Grid.prototype.randomAvailableCell = function () {
+Grid.prototype.randomAvailableCell = function (callback) {
   var cells = this.availableCells();
-
   if (cells.length) {
-    return cells[Math.floor(Math.random() * cells.length)];
+    SkillzCordova.getRandomFloat(function (randFloat) {
+      callback(cells[Math.floor(randFloat * cells.length)]);
+    });
+  } else {
+    callback(undefined);
   }
 };
 
