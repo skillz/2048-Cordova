@@ -46,24 +46,14 @@ GameManager.prototype.isGameTerminated = function () {
 GameManager.prototype.setup = function () {
   var previousState = this.storageManager.getGameState();
 
-  // Reload the game from a previous game if present
-  if (previousState) {
-    this.grid        = new Grid(previousState.grid.size,
-                                previousState.grid.cells); // Reload grid
-    this.score       = previousState.score;
-    this.over        = previousState.over;
-    this.won         = previousState.won;
-    this.keepPlaying = previousState.keepPlaying;
-  } else {
-    this.grid        = new Grid(this.size);
-    this.score       = 0;
-    this.over        = false;
-    this.won         = false;
-    this.keepPlaying = false;
+  this.grid        = new Grid(this.size);
+  this.score       = 0;
+  this.over        = false;
+  this.won         = false;
+  this.keepPlaying = false;
 
-    // Add the initial tiles
-    this.addStartTiles();
-  }
+  // Add the initial tiles
+  this.addStartTiles();
 
   // Update the actuator
   this.actuate();
@@ -72,18 +62,28 @@ GameManager.prototype.setup = function () {
 // Set up the initial tiles to start the game with
 GameManager.prototype.addStartTiles = function () {
   for (var i = 0; i < this.startTiles; i++) {
-    this.addRandomTile();
+    this.addRandomTile(function () {});
   }
 };
 
 // Adds a tile in a random position
-GameManager.prototype.addRandomTile = function () {
-  if (this.grid.cellsAvailable()) {
-    var value = Math.random() < 0.9 ? 2 : 4;
-    var tile = new Tile(this.grid.randomAvailableCell(), value);
-
-    this.grid.insertTile(tile);
+GameManager.prototype.addRandomTile = function (callback) {
+  if (!this.grid.cellsAvailable()) {
+    callback();
+    return;
   }
+
+  var thisGrid = this.grid;
+  SkillzCordova.getRandomFloat(function (randFloat) {
+    var value = randFloat < 0.9 ? 2 : 4;
+
+    thisGrid.randomAvailableCell(function (position) {
+      var tile = new Tile(position, value);
+      thisGrid.insertTile(tile);
+
+      callback();
+    });
+  });
 };
 
 // Sends the updated grid to the actuator
@@ -196,15 +196,18 @@ GameManager.prototype.move = function (direction) {
     SkillzCordova.updatePlayersCurrentScore(self.score, SkillzDelegateCordova.getMatchInfo().id);
   }
 
-  if (moved) {
-    this.addRandomTile();
+  if (!moved) {
+    return;
+  }
 
-    if (!this.movesAvailable()) {
-      this.over = true; // Game over!
+  thisInstance = this;
+  this.addRandomTile(function () {
+    if (!thisInstance.movesAvailable()) {
+      thisInstance.over = true; // Game over!
     }
 
-    this.actuate();
-  }
+    thisInstance.actuate();
+  });
 };
 
 // Get the vector representing the chosen direction
