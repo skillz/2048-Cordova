@@ -28,6 +28,7 @@ buildscript {
 
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.0'
+        classpath 'com.google.gms:google-services:4.0.1'
     }
 }
 
@@ -268,6 +269,7 @@ dependencies {
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
     // SUB-PROJECT DEPENDENCIES END
+    implementation 'com.google.firebase:firebase-core:16.0.1'
 }
 
 def promptForReleaseKeyPassword() {
@@ -329,3 +331,5 @@ for (def func : cdvPluginPostBuildExtras) {
 if (hasProperty('postBuildExtras')) {
     postBuildExtras()
 }
+
+apply plugin: 'com.google.gms.google-services'
