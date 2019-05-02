@@ -253,6 +253,14 @@
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = DF8VM75V3Q;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
