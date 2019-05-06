@@ -21,9 +21,25 @@ pipeline {
         }
       }
     }
+    stage ('Copy Skillz Framework Artifacts') {
+      steps {
+        script {
+          copyArtifacts filter: '**/Skillz.framework.zip,**/Skillz.framework.dSYM.zip,**/Skillz_DEBUG.framework.zip,**/Skillz_DEBUG.framework.dSYM.zip', fingerprintArtifacts: true, flatten: true, projectName: '../SDK-Framework/SDK-Framework-Zinc', selector: specific('${sdk_build_number}')
+        }
+      }
+    }
     stage ('Build iOS and Android Apps') {
       failFast true
       parallel {
+        stage ('Build iOS') {
+          steps {
+            script {
+              sh '''
+                sh ./bin/build-cordova-2048-ios.sh
+              '''
+            }
+          }
+        }
         stage ('Build Android') {
           steps {
             script {
