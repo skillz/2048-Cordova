@@ -20,4 +20,4 @@
 -->
 # Cordova Hooks
 
-Cordova Hooks represent special scripts which could be added by application and plugin developers or even by your own build system  to customize cordova commands. See Hooks Guide for more details:  http://cordova.apache.org/docs/en/edge/guide_appdev_hooks_index.md.html#Hooks%20Guide.
+Wiring up Hooks by plopping scripts in the Hooks directory is deprecated. Please wire them up via `config.xml`. Refer to the [Cordova documentation](https://cordova.apache.org/docs/en/latest/guide/appdev/hooks/index.html#ways-to-define-hooks) for more information.
