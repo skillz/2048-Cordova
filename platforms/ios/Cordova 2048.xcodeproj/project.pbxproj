@@ -18,6 +18,10 @@
 		574498B7953E48CAA2BF91BF /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 9478D9C13DC34CF7B1F1DF5D /* CDVSplashScreen.m */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
 		96993DD584C542CE8F282CAE /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2535FB13087E46358C0957C6 /* CDVDevice.m */; };
+		CE0535C422822EFA00A9E725 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0535C222822EFA00A9E725 /* libc++.tbd */; };
+		CE0535C622822F0000A9E725 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0535C522822F0000A9E725 /* libz.tbd */; };
+		CE06657B228225A500505D47 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE066578228225A400505D47 /* Crashlytics.framework */; };
+		CE06657C228225A500505D47 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE06657A228225A500505D47 /* Fabric.framework */; };
 		CE0910192277729300DEF1EA /* Skillz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE0910172277727A00DEF1EA /* Skillz.framework */; };
 		CE09101A2277729300DEF1EA /* Skillz.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CE0910172277727A00DEF1EA /* Skillz.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -84,6 +88,10 @@
 		8D1107310486CEB800E47090 /* Cordova 2048-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Cordova 2048-Info.plist"; path = "Cordova 2048/Cordova 2048-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = SOURCE_ROOT; };
 		9478D9C13DC34CF7B1F1DF5D /* CDVSplashScreen.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = CDVSplashScreen.m; path = "cordova-plugin-splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; };
 		A760AF77BFD04C70A6686A63 /* SkillzCordova.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = SkillzCordova.m; path = "skillz-crossplatform-cordova/SkillzCordova.m"; sourceTree = "<group>"; };
+		CE0535C222822EFA00A9E725 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		CE0535C522822F0000A9E725 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		CE066578228225A400505D47 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		CE06657A228225A500505D47 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		CE0910172277727A00DEF1EA /* Skillz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Skillz.framework; sourceTree = "<group>"; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
@@ -97,7 +105,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE0535C622822F0000A9E725 /* libz.tbd in Frameworks */,
+				CE0535C422822EFA00A9E725 /* libc++.tbd in Frameworks */,
 				CE0910192277729300DEF1EA /* Skillz.framework in Frameworks */,
+				CE06657B228225A500505D47 /* Crashlytics.framework in Frameworks */,
+				CE06657C228225A500505D47 /* Fabric.framework in Frameworks */,
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -169,6 +181,10 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE0535C522822F0000A9E725 /* libz.tbd */,
+				CE0535C222822EFA00A9E725 /* libc++.tbd */,
+				CE066578228225A400505D47 /* Crashlytics.framework */,
+				CE06657A228225A500505D47 /* Fabric.framework */,
 				CE0910172277727A00DEF1EA /* Skillz.framework */,
 			);
 			name = Frameworks;
@@ -231,6 +247,7 @@
 				1D60588F0D05DD3D006BFB54 /* Frameworks */,
 				CE09101B2277729300DEF1EA /* Embed Frameworks */,
 				CE09101C227772BA00DEF1EA /* ShellScript */,
+				CE06657D228225FD00505D47 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -331,6 +348,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"$SRCROOT/Cordova 2048/Scripts/copy-www-build-step.sh\"";
 			showEnvVarsInLog = 0;
+		};
+		CE06657D228225FD00505D47 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 267045208f4b1d9fdcbf019068b81096fe16475a bc1e89c576f18f877c98d2ca8a922096ef5415a8b5023e922eb6b2c474a455e1\n";
 		};
 		CE09101C227772BA00DEF1EA /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
