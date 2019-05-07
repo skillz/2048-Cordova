@@ -24,11 +24,16 @@ buildscript {
         mavenCentral()
         google()
         jcenter()
+
+        maven {
+            url 'https://maven.fabric.io/public'
+        }
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.0'
         classpath 'com.google.gms:google-services:4.0.1'
+        classpath 'io.fabric.tools:gradle:1.+'
     }
 }
 
@@ -37,6 +42,9 @@ allprojects {
     repositories {
         mavenCentral()
         jcenter()
+        maven {
+            url 'https://maven.fabric.io/public'
+        }
     }
 }
 
@@ -247,6 +255,7 @@ android {
         buildTypes {
             release {
                 signingConfig signingConfigs.release
+                ext.betaDistributionGroupAliases = 'sdk,qa-2,ts,product'
             }
         }
         addSigningProps(cdvReleaseSigningPropertiesFile, signingConfigs.release)
@@ -270,6 +279,9 @@ dependencies {
     implementation(project(path: ":CordovaLib"))
     // SUB-PROJECT DEPENDENCIES END
     implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation ('com.crashlytics.sdk.android:crashlytics:2.10.0@aar') {
+        transitive = true;
+    }
 }
 
 def promptForReleaseKeyPassword() {
@@ -333,3 +345,4 @@ if (hasProperty('postBuildExtras')) {
 }
 
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'io.fabric'

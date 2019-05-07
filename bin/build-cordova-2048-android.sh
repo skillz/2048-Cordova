@@ -8,6 +8,9 @@ rm -rf "./app/build"
 cd "${WORKSPACE}/bin"
 cp "build-extras.gradle" "${WORKSPACE}/platforms/android/app/build-extras.gradle"
 
+# Copy fabric.properties file over. The source path used lives on Sidious.
+cp "/etc/fabric.properties" "${WORKSPACE}/platforms/android/app/fabric.properties"
+
 # Copy the release signing properties file over.
 # NOTE: The keystore file is stored on Sidious.
 cp "release-signing.properties" "${WORKSPACE}/platforms/android/release-signing.properties"
@@ -18,4 +21,4 @@ cp "custom_theme.json" "${WORKSPACE}/platforms/android/app/src/main/assets/custo
 
 # Compile the app.
 cd "${WORKSPACE}/platforms/android"
-./gradlew :app:assembleRelease
+./gradlew :app:assembleRelease :app:crashlyticsUploadDistributionRelease
