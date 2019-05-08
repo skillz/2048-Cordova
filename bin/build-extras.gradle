@@ -14,5 +14,9 @@ ext.cdvVersionCode = versionMajor * 10000000 + versionMinor * 100000 + versionPa
 android {
     defaultConfig {
         versionName "${versionMajor}.${versionMinor}.${versionPatch}.${versionBuild}"
+
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
     }
 }
