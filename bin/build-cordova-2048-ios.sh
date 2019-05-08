@@ -15,16 +15,19 @@ cd "platforms/ios"
 export SDKVERSION=$(/usr/libexec/PlistBuddy -c "Print :CFBundleVersion" "${WORKSPACE}/platforms/ios/Cordova 2048/Skillz.framework/Info.plist")
 export NEW_TAG=`git describe --match '*.*.*'`
 
+if [ -z "${NEW_TAG}" ]; then
+    echo "No release tag found on GitHub, using the default app version."
+    export NEW_TAG="1.0.0"
+fi
+
 export SDKVERSION=${SDKVERSION}
 
-echo ${SDKVERSION}
+echo "SDK version = ${SDKVERSION}"
+echo "App version = ${NEW_TAG}"
 
 # Set Version numbers.
 /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString \"${SDKVERSION}\"" -c "Save" "${WORKSPACE}/platforms/ios/Cordova 2048/Cordova 2048-Info.plist"
 /usr/libexec/PlistBuddy -c "Set :CFBundleVersion \"${NEW_TAG}\"" -c "Save" "${WORKSPACE}/platforms/ios/Cordova 2048/Cordova 2048-Info.plist"
-
-# # Set bundle identifier
-# /usr/libexec/PlistBuddy -c "Set :CFBundleIdentifier \"com.skillz.enterprise.cordova.2048\"" -c "Save" "${WORKSPACE}/platforms/ios/Cordova 2048/Cordova 2048-Info.plist"
 
 # Copy over the custom theme into Skillz.framework.
 cp "${WORKSPACE}/themes/theme.json" "${WORKSPACE}/platforms/ios/Cordova 2048/Skillz.framework/theme.json"
