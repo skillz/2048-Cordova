@@ -1,1 +1,12 @@
 .sass-cache/
+
+# Mac
+.DS_Store
+
+# Visual Studio Code
+.vscode/
+
+# intermediate files
+/node_modules/
+/plugins/
+/typings/

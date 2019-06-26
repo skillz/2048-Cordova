@@ -1,0 +1,48 @@
+{
+  "name": "com.skillz.examples.cordova2048",
+  "displayName": "Cordova2048",
+  "version": "1.0.0",
+  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Apache Cordova Team",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "cordova-android": "^8.0.0",
+    "cordova-ios": "^5.0.1"
+  },
+  "devDependencies": {
+    "cordova-plugin-whitelist": "^1.3.3",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "^1.17.0"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-splashscreen": {},
+      "skillz-crossplatform-cordova": {}
+    },
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skillz/2048-Cordova.git"
+  },
+  "bugs": {
+    "url": "https://github.com/skillz/2048-Cordova/issues"
+  },
+  "homepage": "https://github.com/skillz/2048-Cordova#readme"
+}

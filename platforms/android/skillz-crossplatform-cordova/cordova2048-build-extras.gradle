@@ -1,0 +1,24 @@
+ext.cdvMinSdkVersion = 19
+
+ext.cdvPluginPostBuildExtras.add({
+    dependencies {
+        implementation ('com.skillz.sdk:skillz-sdk-android:22.0.7-SNAPSHOT') {
+            exclude group: 'org.apache.cordova', module: 'framework'
+        }
+    }
+
+    android {
+        defaultConfig {
+            targetSdkVersion 27
+
+            multiDexEnabled true
+        }
+
+        repositories {
+            google()
+            maven {
+                url 'http://nexus.skillz.com/content/groups/public/'
+            }
+        }
+    }
+})
